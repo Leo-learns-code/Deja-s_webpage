@@ -1,0 +1,75 @@
+/* Minimal styles for the question UI */
+:root{
+  --bg:#fff7f9;
+  --accent:#ff4d6d;
+  --muted:#6b7280;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans",sans-serif;
+  background:var(--bg);
+  color:#111827;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+.container{
+  width:100%;
+  max-width:520px;
+  text-align:center;
+  background:white;
+  border-radius:16px;
+  padding:28px;
+  box-shadow:0 10px 30px rgba(15,23,42,0.08);
+}
+.romantic{
+  font-size:1.6rem;
+  margin:0 0 18px 0;
+  color:var(--accent);
+}
+.buttons{display:flex;gap:16px;justify-content:center;margin:8px 0 14px;position:relative;}
+.btn{
+  border:0;
+  cursor:pointer;
+  padding:12px 22px;
+  border-radius:999px;
+  font-weight:600;
+  transition:transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms, background-color 160ms;
+  transform-origin:center center;
+}
+.btn:active{transform:scale(.98)}
+.yes{background:var(--accent);color:white;box-shadow:0 6px 18px rgba(255,77,109,0.18)}
+.no{background:#fff;border:1px solid #e6e7eb;color:var(--muted);box-shadow:0 6px 18px rgba(15,23,42,0.06)}
+.buttons{min-height:56px}
+.note{margin:10px 0 0;color:var(--muted);font-size:0.95rem}
+
+/* Small responsive tweak */
+@media (max-width:380px){
+  .buttons{flex-direction:column}
+  .btn{width:100%;padding:12px}
+}
+
+/* Celebration overlay */
+.celebrate{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,0.45);
+  z-index:9999;
+}
+.celebrate-card{
+  background: #fff;
+  border-radius:14px;
+  padding:18px 20px;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(2,6,23,0.4);
+  max-width:90%;
+}
+.cute-gif{display:block;margin:0 auto 10px;max-width:320px;width:80%;height:auto;border-radius:12px}
+.celebrate-text{font-weight:800;color:var(--accent);font-size:1.6rem;margin-bottom:8px}
+.celebrate-close{background:transparent;border:0;color:var(--muted);font-weight:700;cursor:pointer}
