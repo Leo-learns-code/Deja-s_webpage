@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Track the current scale of the No button
   let scale = 1;
+  // Track scale for Yes button (shrinks on clicks)
+  let scaleYes = 1;
   // Track translate offsets (in px) for No button
   let tx = 0, ty = 0;
   // Track translate offsets for Yes button (dodge target)
@@ -39,12 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Helper to apply transforms
   function applyTransform(){
     noBtn.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
-    yesBtn.style.transform = `translate(${txYes}px, ${tyYes}px)`;
+    yesBtn.style.transform = `translate(${txYes}px, ${tyYes}px) scale(${scaleYes})`;
   }
 
   // Increase the No button size when Yes is clicked. Bounded to avoid runaway growth.
   yesBtn.addEventListener('click', () => {
+    // Grow No button
     scale = Math.min( (Math.round((scale + 0.25) * 100) / 100), 3 ); // step 0.25, max 3
+    // Shrink Yes button slightly on each click, bounded to 0.5
+    scaleYes = Math.max(0.5, Math.round((scaleYes - 0.08) * 100) / 100);
     applyTransform();
     updateWrapSize();
     noBtn.style.boxShadow = '0 14px 40px rgba(255,77,109,0.18)';
